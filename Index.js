@@ -33,7 +33,7 @@ return a/b
 div.addEventListener("click", (event) => {
     if(event.target.tagName === "BUTTON" && event.target.id !== "C"){
         let display = document.createElement("div")
-        display.setAttribute("class", "square")
+        display.setAttribute("class", "display")
         display.innerText = event.target.innerText
         screen.appendChild(display)
     }
