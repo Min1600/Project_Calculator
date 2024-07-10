@@ -20,6 +20,8 @@ body{
     min-width: 300px;
     height: 100px;
     background-color: lightgray;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .button{
