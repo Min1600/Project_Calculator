@@ -1,5 +1,6 @@
 const button = document.querySelector(".btn")
 const screen = document.querySelector(".screen")
+const div = document.querySelector("div")
 const clear = document.querySelector("#C")
 let firsNumber;
 let secondNumber;
