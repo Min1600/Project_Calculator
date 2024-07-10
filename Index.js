@@ -10,7 +10,7 @@ function operate(){
     
 }
 
-function clear(){
+function reset(){
     screen.innerHTML = ""
 }
 
@@ -30,9 +30,8 @@ function divide(a,b ){
 return a/b
 }
 
-
 div.addEventListener("click", (event) => {
-    if(event.target.tagName === "BUTTON"){
+    if(event.target.tagName === "BUTTON" && event.target.id !== "C"){
         let display = document.createElement("div")
         display.setAttribute("class", "square")
         display.innerText = event.target.innerText
