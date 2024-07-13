@@ -11,9 +11,9 @@ let operator = {};
 let secondNumber;
 
 function reset(){
-    first.innerText = ""
-    second.innerText = ""
-    operate.innerText = ""
+
+    console.log("hi")
+
 }
 
 function calculation(){
@@ -42,7 +42,7 @@ div.addEventListener("click", (event) => {
 
 if(event.target.tagName === "BUTTON" && event.target.id !== "C"){
 
-if(event.target.id !== "/" && event.target.id !== "*" && event.target.id !== "-" && event.target.id !== "+" && event.target.id !== "equals" && operate.innerText === ""){
+if(event.target.id !== "/" && event.target.id !== "*" && event.target.id !== "-" && event.target.id !== "+" && event.target.id !== "equals" && operator.hasOwnProperty("val")){
 first.innerText += event.target.innerText
 firstNumber = first.innerText
 
