@@ -3,6 +3,7 @@ const screen = document.querySelector(".screen")
 const div = document.querySelector("div")
 const clear = document.querySelector("#C")
 const equal = document.querySelector("#equals")
+const answer = document.querySelector(".answer")
 let operatorId = ["/", "*", "-", "+", "C"]
 let first = document.querySelector(".first")
 let operate = document.querySelector(".operator")
@@ -12,21 +13,35 @@ let operator = {};
 let secondNumber;
 
 function reset(){
-    first.innerText = ""
-    second.innerText = ""
-    operate.innerText = ""
-    unhighlight()
-    
+ answer.innerText =""
+ first.innerText = ""
+second.innerText = ""
+operator = {};
+unhighlight()
 }
 
 function calculation(){
-let calc
-console.log(Number(firstNumber))
-console.log(operator.val)
-console.log(Number(secondNumber))
-firstNumber = "";
+let calc = operator.val
+let calcFirst = Number(firstNumber);
+let calcSecond = Number(secondNumber)
+switch(calc){
+    case "+":
+       answer.innerText = add(calcFirst, calcSecond);
+       break;
+     case "-":
+        answer.innerText = subtract(calcFirst, calcSecond);
+        break;
+    case "*":
+        answer.innerText =  multiply(calcFirst, calcSecond);
+        break;
+     case "/":
+        answer.innerText =  divide(calcFirst, calcSecond);
+        break;
+}
+first.innerText = ""
+second.innerText = ""
 operator = {};
-secondNumber = "";
+unhighlight()
 }
 
 function highlight(event){
@@ -51,7 +66,7 @@ function multiply(a, b){
 return a*b
 }
 
-function divide(a,b ){
+function divide(a, b){
 return a/b
 }
 
@@ -73,11 +88,12 @@ firstNumber = first.innerText
 }else if(second.innerText === "" && event.target.id !== "equals"){
     highlight(event.target.id)
     operator.val = event.target.innerText
+
 }else if(event.target.id !== "equals" &&  event.target.id === "/" || event.target.id === "*" || event.target.id === "+" || event.target.id === "-" ){
+    highlight(event.target.id)
 calculation()
 }else{
 calculation(event.target.id === "equals")
-reset()
 }
 
 }
