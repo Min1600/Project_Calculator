@@ -40,5 +40,25 @@ body{
     min-height: 60px;
     font-size: 24px;
     background-color: gray;
+    border-radius: 10px;
 }
 
+#zero{
+ min-width: 160px
+}
+
+#big{
+    width: 140px
+}
+
+.first{
+    color: red;
+}
+
+.second{
+    color: blue;
+}
+
+.answer{
+    color: purple
+}
