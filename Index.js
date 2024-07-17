@@ -3,7 +3,7 @@ const screen = document.querySelector(".screen")
 const div = document.querySelector("div")
 const equal = document.querySelector("#equals")
 const answer = document.querySelector(".answer")
-let operatorId = ["/", "*", "-", "+", "C"]
+let operatorId = ["/", "*", "-", "+"]
 let first = document.querySelector(".first")
 let operate = document.querySelector(".operator")
 let second = document.querySelector(".second")
@@ -74,36 +74,67 @@ answerNumber = answer.innerText
 clear()
 }
 
+function convert(){
+if (first.innerText !==""){
+    Number(first.innerText > 0) ?
+    first.innerText = -Math.abs(Number(first.innerText))
+    : first.innerText = Math.abs(Number(first.innerText))
+    firstNumber = first.innerText
+}else if(second.innerText !==""){
+    Number(second.innerText > 0) ?
+    second.innerText = -Math.abs(Number(second.innerText))
+    : first.innerText = Math.abs(Number(second.innerText))
+    secondNumber = second.innerText
+}else if(answer.innerText !==""){
+    Number(answer.innerText > 0) ?
+    answer.innerText = -Math.abs(Number(answer.innerText))
+    : answer.innerText = Math.abs(Number(answer.innerText))
+    answerNumber = answer.innerText
+}
+}
+
+function percentage(){
+if (first.innerText !== ""){
+   first.innerText = divide(Number(first.innerText), 100)
+    firstNumber = first.innerText 
+}else if (second.innerText !== ""){
+    second.innerText = divide(Number(second.innerText), 100)
+    secondNumber = second.innerText
+}else if (answer.innerText !== ""){
+    answer.innerText = divide(Number(answer.innerText), 100)
+    answerNumber = answer.innerText
+}
+}
 function highlight(event){
     let itemHighlight = operatorId.filter((item) => item !== event)
-document.getElementById(event).style.backgroundColor = "white"
-itemHighlight.forEach( (item) => document.getElementById(item).style.backgroundColor = "gray")
+document.getElementById(event).style.backgroundColor = "silver"
+itemHighlight.forEach( (item) => document.getElementById(item).style.backgroundColor = "coral")
 }
 
 function unhighlight(){
-    operatorId.forEach( (item) => document.getElementById(item).style.backgroundColor = "gray")
+    operatorId.forEach( (item) => document.getElementById(item).style.backgroundColor = "coral")
 }
 
 function add(a, b){
-return a + b
+return Math.round(((a + b) + Number.EPSILON) * 100000000) / 100000000
 }
 
 function subtract(a, b){
-    return a - b 
+    return Math.round(((a - b) + Number.EPSILON) * 100000000) / 100000000
 }
 
 function multiply(a, b){
-return a*b
+return Math.round(((a * b) + Number.EPSILON) * 100000000) / 100000000
 }
 
 function divide(a, b){
-return a/b
+return Math.round(((a / b) + Number.EPSILON) * 100000000) / 100000000
 }
 
 div.addEventListener("click", (event) => {
 
 
-if(event.target.tagName === "BUTTON" && event.target.id !== "C"){
+if(event.target.tagName === "BUTTON" && event.target.id !== "clear" && event.target.id !== "negative" && event.target.id !== "decimal"){
 
 if(event.target.id !== operatorId && event.target.id !== "*" && event.target.id !== "/" &&event.target.id !== "-" && event.target.id !== "+" && event.target.id !== "equals" && !operator.hasOwnProperty("val")){
     first.innerText += event.target.innerText
@@ -143,6 +174,3 @@ answerCalculation()
 
 
 
-// the only difference is that first.innerText is empty when pressing an operator
-//operator with first.innerText not being empty works
-//first.innerText being empty when pressing equals it works

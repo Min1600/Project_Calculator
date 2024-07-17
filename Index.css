@@ -11,7 +11,7 @@ body{
     width: 350px;
     height: 440px;
     
-    background-color: gray;
+    background-color: 	darkslategray;
 }
 
 .screen{
@@ -25,6 +25,7 @@ body{
     align-items: center;
     font-size: 48px;
     font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .button{
@@ -51,14 +52,14 @@ body{
     width: 140px
 }
 
-.first{
-    color: red;
+.operator{
+    background-color: 		coral;
 }
 
-.second{
-    color: blue;
+#clear, #negative, #decimal{
+    background-color: 		teal;
 }
 
-.answer{
-    color: purple
+.num{
+    background-color: 		aquamarine;
 }
